@@ -53,6 +53,12 @@ public class Third {
                    if (st >= 0 && st < 10) {
                        System.out.println("enter the second station");
                        ent = in.nextInt();
+                       if(st>ent){
+                           int temp = 0;
+                           temp = st;
+                           st = ent;
+                           ent = temp;
+                       }
                        int amount = stage[0][ent][st];
                        System.out.println("enter the number of person");
                        int person = in.nextInt();
@@ -77,10 +83,18 @@ public class Third {
                      System.out.println("1 enter the valid input");
                      break;
                  } else {
-                     if (st >= 0 && st < 7) {
+                     if (st >= 0 && st < 9) {
                          System.out.println("enter the second station");
                          ent = in.nextInt();
-                         int amount = stage[0][ent][st];
+                           if(st>ent){
+                               int temp = 0;
+                               temp = st;
+                               st = ent;
+                               ent = temp;
+                           }
+
+                       System.out.println("st = "+st +" ent = "+ent);
+                         int amount = stage[0][ent][st]; //ent = last destination and st = starting destination
                          System.out.println("enter the number of person");
                          int person = in.nextInt();
                          System.out.println("enter the number of kids\r\n if kids equals to 0 to give 0");
@@ -106,6 +120,12 @@ public class Third {
                      if (st >= 0 && st < 7) {
                          System.out.println("enter the second station");
                          ent = in.nextInt();
+                         if(st>ent){
+                             int temp = 0;
+                             temp = st;
+                             st = ent;
+                             ent = temp;
+                         }
                          int amount = stage[0][ent][st];
                          System.out.println("enter the number of person");
                          int person = in.nextInt();
@@ -157,6 +177,7 @@ public class Third {
                     input = in.next();
 
                 }
+                break;
             }
 
 
@@ -171,3 +192,4 @@ public class Third {
     }
 
 }
+
