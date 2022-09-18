@@ -47,7 +47,7 @@ public class Third {
              int st=in.nextInt();
            if(station==0) {
                if (st > 11) {
-                   System.out.println("0 enter the valid input");
+                   System.out.println(" enter the valid input");
                    break;
                } else {
                    if (st >= 0 && st < 10) {
@@ -145,22 +145,22 @@ public class Third {
              }
           break;
          }
-
+         break;
      }
 
         System.out.println(arr.length);
 
         System.out.println("enter the num ");
         //String s = "x";
-         String input = in.next();
+         String input ;
         int num = -1;
         try {
-            while (in.hasNext()) {
+            do {input = in.next();
                 if (input.equals("w")) {
                     num++;
                 } else if (input.equals("x")) {
                     num--;
-                } else if(input.equals("!")){
+                } else if (input.equals("!")) {
                     System.exit(0);
                 }
                 if (num < 0) {
@@ -178,7 +178,7 @@ public class Third {
 
                 }
                 break;
-            }
+            } while (true);
 
 
         }
@@ -192,4 +192,3 @@ public class Third {
     }
 
 }
-
