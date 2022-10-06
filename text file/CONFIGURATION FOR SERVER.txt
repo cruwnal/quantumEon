@@ -1,0 +1,2 @@
+//windows -> preferences-> server-> runtime environments->add->Apache->choose the version-> tomcat installation directory->close and apply
+//window->show view-> click on no server and configure -> choose the server->finish

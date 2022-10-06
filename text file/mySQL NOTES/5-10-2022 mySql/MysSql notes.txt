@@ -1,0 +1,155 @@
+for getting the how many database is there in server 
+-> showdatabases;
+
+for creating the data base
+-> create database [db_name];
+
+for using the database;
+-> use [db_name];
+
+for dropping the database
+-> drop database [db_name];
+
+
+operations on table
+create table [table_name](col1,col2,col3,col4.....); //each colmn is called attribute 
+eg user 
+->create table user(id int(11) primar key, name varchar(100) not null , city varchar(50)); //primary key for unique id which not mean to be same
+                   //first colmn          //second colmn               //third colmn
+
+for showing the all tables 
+->show tables;
+desc [tb_name];
+->eg: desc user;
+for dropping the table 
+-> drop table[table_name];
+for renamming the table
+-> alter table user rename to student;
+for removing the data from the table
+->truncate table student;
+
+
+inserting the data in table.
+->insert into [table_name](id,name,city) value(12,'durgesh','delhi');
+when you do not want to change the order
+->insert into [table_name]values(12,'ankit','kanpur');
+
+if want to see whole table.
+
+select*from student;
+
+how to update table.
+
+1. adding colmn in table
+
+alter table[table_name] add col1;
+eg -> alter table student add country varchar(50);
+
+how to update whole colmn 
+-> update  student set country='india';
+
+how to specific row in colmn
+ update [table_name] set col='value' where col = 'value',col ='value';
+-> update student set country ='india' where name='kunal';
+
+if you want to delete perticuler row 
+delete from [table_name] where col=value;
+->delete from student where id =12;
+
+
+clause in mySQL;
+
+where:
+eg 
+
+select*from student where city='bhopal';
+
+as: you can show the colmn name with diffrent attribute 
+eg select name as "USERNAME" ,city as "CITYNAME" from student;
+
+ 
+distinct:
+eg
+-> distinct(country) from student;
+
+two condition
+'and' 'or'
+->select * from student where country='india' and city='bhopal';
+
+->select * from student where country ='india' or state ='tripura';
+
+
+question: select student where there id range is 20 to 29?
+answer
+
+->select * from student where id >14;
+->select*from student where id >14 and id <29;
+
+between operator
+->  select *from student where id between 14 and 29;
+
+question:select row who have id as 14,23,29
+answer:
+-> select * from student where id=23 or id=14 or id =29;
+
+with the help of in operator:
+-> select * from student where id in(23,14,29);
+
+limit operator 
+#when you needs top 3 student in table 
+-> select * from student limit 3;
+
+#when you need top 3 after 2 nd row
+->select * from student limit 3 offset 2;
+
+question how to see table from decending order;
+
+->select * from student order by name;
+->select * from student order by id desc;
+->select * from student order by name desc;
+->select * from student order by id desc;
+->select * from student order by id desc limit 2;
+->select * from student order by id  limit 2;
+
+
+like operator
+% -> it means zero, one or multiple character 
+    eg-> AB, A , ABBCDDEF 
+      A%
+-> select *from student where name like 'a%';
+->select * from student where name like 'r%';
+  _ -> it represent single character 
+    eg-> A, B, R
+ question: show the rows where citi's second character is 'h';
+-> select *from student where  city like '_h%' ;
+-> select *from student where  city like "_h%" ;
+question: show the rows where citi's second last character is 'l';
+-> select * from student where city like "%l_";
+
+
+SUM function
+->select SUM(id) from student;
+-> select sum(id) as "total salary" from student;
+
+AVG function
+-> select AVG(id) as "Avarage salary" from student;
+
+COUNT function
+->select COUNT(*) as "total rows" from student;
+-select COUNT(id) as "total rows" from student;
+
+MIN function
+-> select MIN(id) as "minimum salaray" from student;
+-> select * from student where id=( select MIN(id) as "minimum salary" from student );
+-> select name from student where id=(select MIN(id) from student);
+
+MAX function
+-> selct MAX(id) as "maximum salary" from student;
+-> select * from student where id = (select  MAX(id) from student);
+
+Foreign key and joins
+->create table laptops(lid int primary key, lmodel varchar(200) , studentId int, foreign key(studentID) references student(id));
+-> insert into laptops value(13414,'HP', 1);
+->insert into laptops value(232232,'DELL',22);
+-> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId;
+

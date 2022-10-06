@@ -1,0 +1,1044 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 30
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> showdatabases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'showdatabases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kunaldb            |
+| mysql              |
+| performance_schema |
+| sys                |
+| tree               |
+| user               |
++--------------------+
+7 rows in set (1.90 sec)
+
+mysql> create database learn;
+Query OK, 1 row affected (0.27 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kunaldb            |
+| learn              |
+| mysql              |
+| performance_schema |
+| sys                |
+| tree               |
+| user               |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use learn;
+Database changed
+mysql> drop database learn;
+Query OK, 0 rows affected (0.58 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kunaldb            |
+| mysql              |
+| performance_schema |
+| sys                |
+| tree               |
+| user               |
++--------------------+
+7 rows in set (0.04 sec)
+
+mysql> create database learn;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> use learn;
+Database changed
+mysql> create table user(id int(11) primary key,name varchar(100) not null,city varchar(50)  );
+Query OK, 0 rows affected, 1 warning (1.82 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_learn |
++-----------------+
+| user            |
++-----------------+
+1 row in set (0.36 sec)
+
+mysql> desc user;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(100) | NO   |     | NULL    |       |
+| city  | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.16 sec)
+
+mysql> drop table user;
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table user(id int(11) primary key,name varchar(100) not null,city varchar(50)  );
+Query OK, 0 rows affected, 1 warning (0.20 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_learn |
++-----------------+
+| user            |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> desc user;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(100) | NO   |     | NULL    |       |
+| city  | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table user to student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to student' at line 1
+mysql> alter table rename; user to student
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rename' at line 1
+    -> alter table rename; user to student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user to student
+alter table rename' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'user to student' at line 1
+mysql> alter table rename user to student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rename user to student' at line 1
+mysql> alter table user rename to student;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_learn |
++-----------------+
+| student         |
++-----------------+
+1 row in set (0.02 sec)
+
+mysql> desc student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(100) | NO   |     | NULL    |       |
+| city  | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> desc student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(100) | NO   |     | NULL    |       |
+| city  | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student (id,name,city) value(20,'kunal','Bhopal');
+Query OK, 1 row affected (1.48 sec)
+
+mysql> desc student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   | PRI | NULL    |       |
+| name  | varchar(100) | NO   |     | NULL    |       |
+| city  | varchar(50)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values (12,'ankit','kanpur');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select*from student;
++----+-------+--------+
+| id | name  | city   |
++----+-------+--------+
+| 12 | ankit | kanpur |
+| 20 | kunal | Bhopal |
++----+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student value(22,'rohit kain','bhopal');
+Query OK, 1 row affected (0.38 sec)
+
+mysql> insert into student value(1,'kunal singh','patna');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into student value(14,tapomay debnath,'agartala');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'debnath,'agartala')' at line 1
+mysql> insert into student values(14,tapomay debnath,'agartala');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'debnath,'agartala')' at line 1
+mysql> insert into student value(14,'tapomay debnath','agartala');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select* from student;
++----+-----------------+----------+
+| id | name            | city     |
++----+-----------------+----------+
+|  1 | kunal singh     | patna    |
+| 12 | ankit           | kanpur   |
+| 14 | tapomay debnath | agartala |
+| 20 | kunal           | Bhopal   |
+| 22 | rohit kain      | bhopal   |
++----+-----------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> alter table student add country varchar(50);
+Query OK, 0 rows affected (0.66 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | NULL    |
+| 12 | ankit           | kanpur   | NULL    |
+| 14 | tapomay debnath | agartala | NULL    |
+| 20 | kunal           | Bhopal   | NULL    |
+| 22 | rohit kain      | bhopal   | NULL    |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> update student
+    -> update country
+    -> update 1
+    -> 'india';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'update country
+update 1
+'india'' at line 2
+mysql> select *from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | NULL    |
+| 12 | ankit           | kanpur   | NULL    |
+| 14 | tapomay debnath | agartala | NULL    |
+| 20 | kunal           | Bhopal   | NULL    |
+| 22 | rohit kain      | bhopal   | NULL    |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update table student set country ='india' where name ='kunal' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student set country ='india' where name ='kunal'' at line 1
+mysql> update student set country ='india' where name ='kunal';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | NULL    |
+| 12 | ankit           | kanpur   | NULL    |
+| 14 | tapomay debnath | agartala | NULL    |
+| 20 | kunal           | Bhopal   | india   |
+| 22 | rohit kain      | bhopal   | NULL    |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update student set country ='india';
+Query OK, 4 rows affected (0.05 sec)
+Rows matched: 5  Changed: 4  Warnings: 0
+
+mysql> select* from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | india   |
+| 12 | ankit           | kanpur   | india   |
+| 14 | tapomay debnath | agartala | india   |
+| 20 | kunal           | Bhopal   | india   |
+| 22 | rohit kain      | bhopal   | india   |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update student set name ='kunal nagwanshi' where name ='kunal';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | india   |
+| 12 | ankit           | kanpur   | india   |
+| 14 | tapomay debnath | agartala | india   |
+| 20 | kunal nagwanshi | Bhopal   | india   |
+| 22 | rohit kain      | bhopal   | india   |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update student set name ='ankit gumnam' where id='12';
+Query OK, 1 row affected (0.52 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | india   |
+| 12 | ankit gumnam    | kanpur   | india   |
+| 14 | tapomay debnath | agartala | india   |
+| 20 | kunal nagwanshi | Bhopal   | india   |
+| 22 | rohit kain      | bhopal   | india   |
++----+-----------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update student set city='jhumaritaliya' where id = 12;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++----+-----------------+---------------+---------+
+| id | name            | city          | country |
++----+-----------------+---------------+---------+
+|  1 | kunal singh     | patna         | india   |
+| 12 | ankit gumnam    | jhumaritaliya | india   |
+| 14 | tapomay debnath | agartala      | india   |
+| 20 | kunal nagwanshi | Bhopal        | india   |
+| 22 | rohit kain      | bhopal        | india   |
++----+-----------------+---------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> delete from student where id=12;
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select*from student;
++----+-----------------+----------+---------+
+| id | name            | city     | country |
++----+-----------------+----------+---------+
+|  1 | kunal singh     | patna    | india   |
+| 14 | tapomay debnath | agartala | india   |
+| 20 | kunal nagwanshi | Bhopal   | india   |
+| 22 | rohit kain      | bhopal   | india   |
++----+-----------------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student (id,name,city) value(23,'anjana tirkey','bhuwneshwar');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into student (id,name,city) value(29,'raj chakroborty','agartala','india');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student (id,name,city,country) value(29,'raj chakroborty','agartala','india');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> update student set country ='india' where id =23;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++----+-----------------+-------------+---------+
+| id | name            | city        | country |
++----+-----------------+-------------+---------+
+|  1 | kunal singh     | patna       | india   |
+| 14 | tapomay debnath | agartala    | india   |
+| 20 | kunal nagwanshi | Bhopal      | india   |
+| 22 | rohit kain      | bhopal      | india   |
+| 23 | anjana tirkey   | bhuwneshwar | india   |
+| 29 | raj chakroborty | agartala    | india   |
++----+-----------------+-------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> alter table student add state varchar(50);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update student set state ='madhya pradesh' where id = 20,id=22;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',id=22' at line 1
+mysql> update student set state ='madhya pradesh' where id =22,20;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',20' at line 1
+mysql> update student set state ='madhya pradesh' where id =22;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set state='tripura' where city='agartala';
+Query OK, 2 rows affected (0.03 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update student set state='madhya pradesh' where city='bhopal';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 2  Changed: 1  Warnings: 0
+
+mysql> update student set state='odisa' where id=23;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student
+    -> ;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | NULL           |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> update student set state ='bihar' where id =1;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student where city='bhopal';
++----+-----------------+--------+---------+----------------+
+| id | name            | city   | country | state          |
++----+-----------------+--------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal | india   | madhya pradesh |
++----+-----------------+--------+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select* from student where id =id/2==0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==0' at line 1
+mysql> select name,city,country from student where country ='india';
++-----------------+-------------+---------+
+| name            | city        | country |
++-----------------+-------------+---------+
+| kunal singh     | patna       | india   |
+| tapomay debnath | agartala    | india   |
+| kunal nagwanshi | Bhopal      | india   |
+| rohit kain      | bhopal      | india   |
+| anjana tirkey   | bhuwneshwar | india   |
+| raj chakroborty | agartala    | india   |
++-----------------+-------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select name as "USERNAME" , city as "CITYNAME" from student;
++-----------------+-------------+
+| USERNAME        | CITYNAME    |
++-----------------+-------------+
+| kunal singh     | patna       |
+| tapomay debnath | agartala    |
+| kunal nagwanshi | Bhopal      |
+| rohit kain      | bhopal      |
+| anjana tirkey   | bhuwneshwar |
+| raj chakroborty | agartala    |
++-----------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select name as "USERNAME" , city as "CITYNAME" from student where city='bhopal' ;
++-----------------+----------+
+| USERNAME        | CITYNAME |
++-----------------+----------+
+| kunal nagwanshi | Bhopal   |
+| rohit kain      | bhopal   |
++-----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select country from student;
++---------+
+| country |
++---------+
+| india   |
+| india   |
+| india   |
+| india   |
+| india   |
+| india   |
++---------+
+6 rows in set (0.00 sec)
+
+mysql> select id,name from student;
++----+-----------------+
+| id | name            |
++----+-----------------+
+|  1 | kunal singh     |
+| 14 | tapomay debnath |
+| 20 | kunal nagwanshi |
+| 22 | rohit kain      |
+| 23 | anjana tirkey   |
+| 29 | raj chakroborty |
++----+-----------------+
+6 rows in set (0.00 sec)
+
+mysql> distinct(city),distinct(state) from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(city),distinct(state) from student' at line 1
+mysql>  select distinct(city),distinct(state) from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(state) from student' at line 1
+mysql>  select distinct(city) from student;
++-------------+
+| city        |
++-------------+
+| patna       |
+| agartala    |
+| Bhopal      |
+| bhuwneshwar |
++-------------+
+4 rows in set (0.03 sec)
+
+mysql> select distinct(state) from student;
++----------------+
+| state          |
++----------------+
+| bihar          |
+| tripura        |
+| madhya pradesh |
+| odisa          |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_learn |
++-----------------+
+| student         |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student where country ='india' and city ='bhopal';
++----+-----------------+--------+---------+----------------+
+| id | name            | city   | country | state          |
++----+-----------------+--------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal | india   | madhya pradesh |
++----+-----------------+--------+---------+----------------+
+2 rows in set (1.14 sec)
+
+mysql> select * from student where country ='india' or state ='tripura';
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student where id >14;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+4 rows in set (0.07 sec)
+
+mysql> select*from student where id >14 and id <29;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
++----+-----------------+-------------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> select * student where id between 14 and 29;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student where id between 14 and 29' at line 1
+mysql> select *from student where id between 14 and 29;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student where id=23 or id=14; or id =29;
++----+-----------------+-------------+---------+---------+
+| id | name            | city        | country | state   |
++----+-----------------+-------------+---------+---------+
+| 14 | tapomay debnath | agartala    | india   | tripura |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa   |
++----+-----------------+-------------+---------+---------+
+2 rows in set (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'or id =29' at line 1
+mysql> select * from student where id=23 or id=14 or id =29;
++----+-----------------+-------------+---------+---------+
+| id | name            | city        | country | state   |
++----+-----------------+-------------+---------+---------+
+| 14 | tapomay debnath | agartala    | india   | tripura |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa   |
+| 29 | raj chakroborty | agartala    | india   | tripura |
++----+-----------------+-------------+---------+---------+
+3 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ;
+ERROR:
+No query specified
+
+mysql> select * from student where id in(23,14,29);
++----+-----------------+-------------+---------+---------+
+| id | name            | city        | country | state   |
++----+-----------------+-------------+---------+---------+
+| 14 | tapomay debnath | agartala    | india   | tripura |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa   |
+| 29 | raj chakroborty | agartala    | india   | tripura |
++----+-----------------+-------------+---------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student limit 3;
++----+-----------------+----------+---------+----------------+
+| id | name            | city     | country | state          |
++----+-----------------+----------+---------+----------------+
+|  1 | kunal singh     | patna    | india   | bihar          |
+| 14 | tapomay debnath | agartala | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal   | india   | madhya pradesh |
++----+-----------------+----------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> select * from student limit 2 offset 2;
++----+-----------------+--------+---------+----------------+
+| id | name            | city   | country | state          |
++----+-----------------+--------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal | india   | madhya pradesh |
++----+-----------------+--------+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student limit 3 offset 2;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
++----+-----------------+-------------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student order by id desc;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 29 | raj chakroborty | agartala    | india   | tripura        |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+|  1 | kunal singh     | patna       | india   | bihar          |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student order by name;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.29 sec)
+
+mysql> select * from student order by name desc;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
+|  1 | kunal singh     | patna       | india   | bihar          |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student limit 3 order by id desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by id desc' at line 1
+mysql> select * from student order by id desc;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 29 | raj chakroborty | agartala    | india   | tripura        |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+|  1 | kunal singh     | patna       | india   | bihar          |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student order by id desc limit 2;
++----+-----------------+-------------+---------+---------+
+| id | name            | city        | country | state   |
++----+-----------------+-------------+---------+---------+
+| 29 | raj chakroborty | agartala    | india   | tripura |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa   |
++----+-----------------+-------------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student order by id  limit 2;
++----+-----------------+----------+---------+---------+
+| id | name            | city     | country | state   |
++----+-----------------+----------+---------+---------+
+|  1 | kunal singh     | patna    | india   | bihar   |
+| 14 | tapomay debnath | agartala | india   | tripura |
++----+-----------------+----------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> update student name='kunal' where name='kunal singh';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='kunal' where name='kunal singh'' at line 1
+mysql> update student set name='kunal' where name='kunal singh';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal           | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal           | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from student where name like 'a%';
++----+---------------+-------------+---------+-------+
+| id | name          | city        | country | state |
++----+---------------+-------------+---------+-------+
+| 23 | anjana tirkey | bhuwneshwar | india   | odisa |
++----+---------------+-------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name like 'r%';
++----+-----------------+----------+---------+----------------+
+| id | name            | city     | country | state          |
++----+-----------------+----------+---------+----------------+
+| 22 | rohit kain      | bhopal   | india   | madhya pradesh |
+| 29 | raj chakroborty | agartala | india   | tripura        |
++----+-----------------+----------+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * student where is city like "_h%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student where is city like "_h%"' at line 1
+mysql> select *from student where is city like'_h%' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is city like'_h%'' at line 1
+mysql> select *from student where is city like "_h%" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is city like "_h%"' at line 1
+mysql> select *from student where  city like "_h%" ;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
++----+-----------------+-------------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select *from student where  city like '_h%' ;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
++----+-----------------+-------------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal           | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student where city like "%l_";
++----+-----------------+----------+---------+---------+
+| id | name            | city     | country | state   |
++----+-----------------+----------+---------+---------+
+| 14 | tapomay debnath | agartala | india   | tripura |
+| 29 | raj chakroborty | agartala | india   | tripura |
++----+-----------------+----------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select SUM(id) from student;
++---------+
+| SUM(id) |
++---------+
+|     109 |
++---------+
+1 row in set (0.04 sec)
+
+mysql> select sum(id) as "total salary" from student;
++--------------+
+| total salary |
++--------------+
+|          109 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select AVG(id) as "Avarage salary" from student;
++----------------+
+| Avarage salary |
++----------------+
+|        18.1667 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select COUNT(id) from student;
++-----------+
+| COUNT(id) |
++-----------+
+|         6 |
++-----------+
+1 row in set (0.35 sec)
+
+mysql> select COUNT(*) as "total rows" from student;
++------------+
+| total rows |
++------------+
+|          6 |
++------------+
+1 row in set (0.03 sec)
+
+mysql> select MIN(id) as "minimum salaray" from student;
++-----------------+
+| minimum salaray |
++-----------------+
+|               1 |
++-----------------+
+1 row in set (0.35 sec)
+
+mysql> select * from student where MIN(id) as "minimum salary" ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as "minimum salary"' at line 1
+mysql> select * from student where id=( MIN(id) as "minimum salary" );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as "minimum salary" )' at line 1
+mysql> select * from student where id=( MIN(id) as "minimum salary" from student );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as "minimum salary" from student )' at line 1
+mysql> select * from student where id=( select MIN(id) as "minimum salary" from student );
++----+-------+-------+---------+-------+
+| id | name  | city  | country | state |
++----+-------+-------+---------+-------+
+|  1 | kunal | patna | india   | bihar |
++----+-------+-------+---------+-------+
+1 row in set (0.06 sec)
+
+mysql> select name from student where id=(select MIN(id) from student);
++-------+
+| name  |
++-------+
+| kunal |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where id = (select  MAX(id) from student);
++----+-----------------+----------+---------+---------+
+| id | name            | city     | country | state   |
++----+-----------------+----------+---------+---------+
+| 29 | raj chakroborty | agartala | india   | tripura |
++----+-----------------+----------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> create table laptops(lid int primary key, lmodel varchar(200) , studentId);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table laptops(lid int primary key, lmodel varchar(200) , studentId int, foreign key(studentID) references student(id));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> show tables
+    -> ;
++-----------------+
+| Tables_in_learn |
++-----------------+
+| laptops         |
+| student         |
++-----------------+
+2 rows in set (0.03 sec)
+
+mysql> desc student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | int          | NO   | PRI | NULL    |       |
+| name    | varchar(100) | NO   |     | NULL    |       |
+| city    | varchar(50)  | YES  |     | NULL    |       |
+| country | varchar(50)  | YES  |     | NULL    |       |
+| state   | varchar(50)  | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.09 sec)
+
+mysql> desc laptops;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| lid       | int          | NO   | PRI | NULL    |       |
+| lmodel    | varchar(200) | YES  |     | NULL    |       |
+| studentId | int          | YES  | MUL | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into latops value(13414,'HP', 1);
+ERROR 1146 (42S02): Table 'learn.latops' doesn't exist
+mysql> insert into laptops value(13414,'HP', 1);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into laptops value(23232,'DELL',20);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into laptops value(23232,'DELL',22);
+ERROR 1062 (23000): Duplicate entry '23232' for key 'laptops.PRIMARY'
+mysql> insert into laptops value(232232,'DELL',22);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select from laptops;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from laptops' at line 1
+mysql> select * from laptops;
++--------+--------+-----------+
+| lid    | lmodel | studentId |
++--------+--------+-----------+
+|  13414 | HP     |         1 |
+|  23232 | DELL   |        20 |
+| 232232 | DELL   |        22 |
++--------+--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+-----------------+-------------+---------+----------------+
+| id | name            | city        | country | state          |
++----+-----------------+-------------+---------+----------------+
+|  1 | kunal           | patna       | india   | bihar          |
+| 14 | tapomay debnath | agartala    | india   | tripura        |
+| 20 | kunal nagwanshi | Bhopal      | india   | madhya pradesh |
+| 22 | rohit kain      | bhopal      | india   | madhya pradesh |
+| 23 | anjana tirkey   | bhuwneshwar | india   | odisa          |
+| 29 | raj chakroborty | agartala    | india   | tripura        |
++----+-----------------+-------------+---------+----------------+
+6 rows in set (0.03 sec)
+
+mysql> select student.name, student.city , laptops.lmodel from student , laptops where student.d=laptops.studentId;
+ERROR 1054 (42S22): Unknown column 'student.d' in 'where clause'
+mysql> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId;
++-----------------+--------+--------+
+| name            | city   | lmodel |
++-----------------+--------+--------+
+| kunal           | patna  | HP     |
+| kunal nagwanshi | Bhopal | DELL   |
+| rohit kain      | bhopal | DELL   |
++-----------------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId and student.name = (select name from student where name like 'k%' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId and student.name = (select name from student where name like 'k%') ;
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId and student.name = '%k ;
+    '> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId and student.name = '%k' ;
+    '>
+    '> select student.name, student.city , laptops.lmodel from student , laptops where student.id=laptops.studentId and student.name = 'kunal' ;
+    '> ;
+    '> ;
+    '> cdce
+    '> ede
+    '>
